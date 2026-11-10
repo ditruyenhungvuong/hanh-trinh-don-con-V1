@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" role="img" aria-labelledby="t"><title id="t">Hai bé capybara</title>
+<!-- Hành Trình Đón Con · icon.svg · Chủ: FE-6 Hình (T-06). Ô xanh lục bo góc, hai đầu capybara (bé B đội lá). Màu cố định vì có nền riêng. -->
+<defs>
+<g id="hs"><ellipse cx="-24" cy="-104" rx="6.5" ry="6"/><ellipse cx="24" cy="-104" rx="6.5" ry="6"/><path d="M-34-86c0-18 14-25 34-25s34 7 34 25c0 14-12 25-34 25s-34-11-34-25z"/></g>
+<g id="h">
+<use xlink:href="#hs" fill="#C98A55" stroke="#6B4A35" stroke-width="7"/><use xlink:href="#hs" fill="#C98A55"/>
+<g fill="#8E5A33"><ellipse cx="-24" cy="-103" rx="3.5" ry="3"/><ellipse cx="24" cy="-103" rx="3.5" ry="3"/></g>
+<ellipse cy="-76" rx="21" ry="14" fill="#EBC9A2"/>
+<path d="M-9-83q9-5 18 0q-1 6-9 6t-9-6z" fill="#6B4A35"/>
+<path d="M-22-93q5 4 10 0M12-93q5 4 10 0" fill="none" stroke="#4A3325" stroke-width="3" stroke-linecap="round"/>
+<g fill="#F2A58E"><ellipse cx="-25" cy="-80" rx="6" ry="4"/><ellipse cx="25" cy="-80" rx="6" ry="4"/></g>
+</g>
+</defs>
+<rect width="64" height="64" rx="14" fill="#2E7D74"/>
+<g transform="translate(21 66) scale(.4) rotate(4)"><use xlink:href="#h"/></g>
+<g transform="translate(43 64) scale(.4) rotate(-4)"><use xlink:href="#h"/><path fill="#9FE0D2" d="M-3-109q6-18 24-17q-5 18-24 17z"/></g>
+</svg>

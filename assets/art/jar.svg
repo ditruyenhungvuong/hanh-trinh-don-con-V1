@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-labelledby="t"><title id="t">Hũ bình an</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Hũ rỗng cho C1 chặng 5; tim (heart.svg) do app đặt chồng lên. Đêm đổi màu qua prefers-color-scheme. -->
+<style>.g{fill:#DDEFEB;fill-opacity:.75;stroke:#2E7D74}.lid{fill:#C98A55}.r{stroke:#F2A58E}.h{fill:#F2A58E;stroke:#C46A50}
+@media (prefers-color-scheme:dark){.g{fill:#1F3B38;stroke:#7CC9BB}.r{stroke:#F0A892}.h{fill:#F0A892;stroke:#F7C9BA}}</style>
+<path class="g" stroke-width="3.5" stroke-linejoin="round" d="M34 38h52v8c14 6 22 18 22 34v40q0 14-14 14h-68q-14 0-14-14v-40c0-16 8-28 22-34z"/>
+<rect class="lid" x="30" y="22" width="60" height="18" rx="6"/><path class="r" d="M30 31h60" stroke-width="3"/>
+<path d="M24 82q0-16 12-24" fill="none" stroke="#FFF" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+</svg>

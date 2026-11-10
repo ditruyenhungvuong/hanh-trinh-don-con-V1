@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" role="img" aria-labelledby="t"><title id="t">Một đám mây nhỏ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Mây cho B5 Đặt tên suy nghĩ ("Thả lên mây"). Đêm đổi màu qua prefers-color-scheme. -->
+<style>.c{fill:#FFF;stroke:#C9D6D3}.s{fill:#E7F6F2}@media (prefers-color-scheme:dark){.c{fill:#2E3D4C;stroke:#8696A3}.s{fill:#3A4B5C}}</style>
+<path class="c" stroke-width="3" stroke-linejoin="round" d="M44 104a26 26 0 0 1 2-52a34 34 0 0 1 62-18a28 28 0 0 1 48 16a26 26 0 0 1 2 54z"/>
+<path class="s" d="M40 96q60 8 120 0a20 20 0 0 1-2 6h-116a20 20 0 0 1-2-6z"/>
+</svg>

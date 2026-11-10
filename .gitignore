@@ -1,0 +1,28 @@
+# Hành Trình Đón Con – .gitignore · Chủ: devops (T-07). Trùng với EXCLUDE trong upload.sh / upload.bat (chặn hai lớp).
+
+# Rác của hệ điều hành / Google Drive
+desktop.ini
+Thumbs.db
+.DS_Store
+*.tmp
+
+# Cấu hình preview của Claude Code (chỉ dùng trên máy)
+.claude/
+
+# Kết quả test (test ghi ra TMPDIR, phòng khi chạy nhầm thư mục)
+qa-out/
+tests/out/
+node_modules/
+
+# Ghi chú nội bộ của đội (không đẩy lên repo công khai; giấy phép font đã có ở assets/fonts/OFL.txt)
+NGUON.md
+
+# File bí mật: repo công khai, không bao giờ đẩy (upload.sh / upload.bat còn chặn thêm một lớp)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Bản trùng do đồng bộ Drive (rclone bisync) sinh ra khi file bị sửa ở cả hai phía
+*.conflict*

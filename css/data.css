@@ -1,0 +1,41 @@
+/* Hành Trình Đón Con – css/data.css · Chủ: FE-3 Lưu trữ & Dữ liệu của mình (T-03)
+   M18 Dữ liệu của mình (.mydata), M18b Những điều app không bao giờ làm (.never). Chỉ dùng token của styles.css. */
+
+/* ===== Khối, dòng ===== */
+.data-sec h2 { font-size: var(--fs-h2); margin: 0 0 var(--sp-2); }
+.data-sec h2 ~ h2 { margin-top: var(--sp-4); }
+.data-sec h3 { font-size: var(--fs-h3); margin: var(--sp-3) 0 var(--sp-2); }
+.data-mode { font-weight: 600; margin: 0 0 var(--sp-1); }
+.data-row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); min-height: var(--tap-min); }
+
+/* ===== Công tắc: chữ Bật/Tắt cạnh rãnh, không chỉ màu (UX 7 Switch) ===== */
+.data-sw { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-2) 0; }
+.data-sw-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.data-sw-text > span:first-child { font-weight: 600; }
+.data-sw-btn { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: var(--tap-min); min-width: var(--tap-min);
+  padding: 4px; background: none; border: 0; border-radius: var(--radius-pill); font: 600 var(--fs-small) var(--font); color: var(--ink); cursor: pointer; flex: none; }
+.data-sw-btn .switch { display: inline-block; }
+.data-sw-btn .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 23px; height: 23px; border-radius: 50%;
+  background: var(--surface); box-shadow: var(--shadow); transition: transform .15s; }
+.data-sw-btn[aria-checked="true"] .switch { background: var(--primary); border-color: var(--primary); }
+.data-sw-btn[aria-checked="true"] .switch::after { transform: translateX(20px); }
+
+/* ===== Danh sách gọn 20 lần gần nhất (A1, AC-19) ===== */
+.data-list { list-style: none; margin: 0 0 var(--sp-3); padding: 0; }
+.data-entry { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); padding: var(--sp-2) 0; border-bottom: 1px solid var(--line); }
+.data-entry > div { display: flex; flex-direction: column; min-width: 0; }
+.data-entry-when { font-size: var(--fs-small); font-weight: 600; }
+.data-del { flex: none; min-height: var(--tap-min); padding: 8px 14px; font-size: var(--fs-small); }
+.data-del.is-armed { background: var(--danger); color: var(--danger-ink); }
+
+/* ===== M18b ===== */
+.never-list { list-style: none; margin: var(--sp-3) 0; padding: 0; }
+.never-list li { display: flex; gap: var(--sp-2); padding: 6px 0; }
+.never-list li > span { color: var(--muted); font-weight: 600; flex: none; }
+.cmp-row { padding: var(--sp-2) 0; border-bottom: 1px solid var(--line); }
+.cmp-row:last-child { border-bottom: 0; }
+.cmp-row h3 { font-size: var(--fs-h3); margin: 0 0 4px; }
+.cmp-row p { margin: 2px 0; }
+.cmp-k { font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) { .data-sw-btn .switch::after { transition: none; } }

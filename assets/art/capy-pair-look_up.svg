@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" role="img" aria-labelledby="t"><title id="t">Hai bé capybara cùng ngẩng nhìn một đám mây nhỏ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Tư thế look_up: M12 Hoàn tất. Tĩnh; cái gật nhẹ (nếu có) do app làm bằng CSS trên thẻ img. Màu theo token Hừng Đông; đêm đổi qua prefers-color-scheme (trang đêm đặt color-scheme: dark). -->
+<style>.o{stroke:#8E5A33}.k{fill:#F2A58E}.a{fill:#C46A50}.l{fill:#2E7D74}.v{stroke:#2E7D74}.d{fill:#9CC7B5}.cl{fill:#FFF;stroke:#C9D6D3}
+@media (prefers-color-scheme:dark){.o{stroke:#8696A3;stroke-opacity:.8}.k,.a{fill:#F0A892}.l{fill:#7CC9BB}.v{stroke:#7CC9BB}.d{fill:#4E8F86}.cl{fill:#2E3D4C;stroke:#8696A3}}</style>
+<defs>
+<g id="hs"><ellipse cx="-24" cy="-104" rx="6.5" ry="6"/><ellipse cx="24" cy="-104" rx="6.5" ry="6"/><path d="M-34-86c0-18 14-25 34-25s34 7 34 25c0 14-12 25-34 25s-34-11-34-25z"/></g>
+<g id="cb">
+<path d="M-40-4c-8-30 0-62 40-62s48 32 40 62q-40 9-80 0z" fill="#C98A55" class="o" stroke-width="2.5"/>
+<ellipse cy="-31" rx="25" ry="25" fill="#EBC9A2" opacity=".75"/>
+<g fill="#8E5A33"><ellipse cx="-17" cy="0" rx="13" ry="5.5"/><ellipse cx="17" cy="0" rx="13" ry="5.5"/></g>
+<g fill="#A86C3E"><ellipse cx="-10" cy="-50" rx="11" ry="7" transform="rotate(18 -10 -50)"/><ellipse cx="10" cy="-50" rx="11" ry="7" transform="rotate(-18 10 -50)"/></g>
+</g>
+<g id="ch">
+<use xlink:href="#hs" fill="#C98A55" class="o" stroke-width="5"/><use xlink:href="#hs" fill="#C98A55"/>
+<g fill="#8E5A33"><ellipse cx="-24" cy="-103" rx="3.5" ry="3"/><ellipse cx="24" cy="-103" rx="3.5" ry="3"/></g>
+<ellipse cy="-76" rx="21" ry="14" fill="#EBC9A2"/>
+<path d="M-9-83q9-5 18 0q-1 6-9 6t-9-6z" fill="#6B4A35"/>
+<path d="M-6-73q3 3 6 0q3 3 6 0" fill="none" stroke="#6B4A35" stroke-width="1.6" stroke-linecap="round"/>
+<g class="k" opacity=".8"><ellipse cx="-25" cy="-80" rx="6" ry="4"/><ellipse cx="25" cy="-80" rx="6" ry="4"/></g>
+</g>
+<g id="eo"><g fill="#3A2A20"><ellipse cx="-17" cy="-95" rx="3.8" ry="4.4"/><ellipse cx="17" cy="-95" rx="3.8" ry="4.4"/></g><g fill="#FFF"><circle cx="-17" cy="-97.5" r="1.5"/><circle cx="17" cy="-97.5" r="1.5"/></g><path d="M-22-103q5-3 10 0M12-103q5-3 10 0" fill="none" stroke="#8E5A33" stroke-width="1.6" stroke-linecap="round"/></g>
+<!-- Khăn đào của bé A -->
+<g id="sa" class="a"><path d="M-31-64q31 13 62 0l1 8q-32 14-64 0z"/><path d="M12-58l12-1 4 22-11 2z"/></g>
+<!-- Lá xanh trên đầu bé B (không gắn giới) -->
+<g id="sb"><path class="l" d="M-3-109q6-18 24-17q-5 18-24 17z"/><path class="v" d="M-2-110q9-6 18-13" fill="none" stroke-width="1.4" opacity=".5"/></g>
+</defs>
+<path class="cl" d="M72 54a13 13 0 0 1 6-24a17 17 0 0 1 31-7a14 14 0 0 1 25 9a11 11 0 0 1 0 22z" stroke-width="2"/>
+<g transform="translate(62 188) scale(1.1) rotate(-3)"><use xlink:href="#cb"/><use xlink:href="#ch"/><use xlink:href="#eo"/><use xlink:href="#sa"/></g>
+<g transform="translate(138 188) scale(1.1) rotate(3)"><use xlink:href="#cb"/><use xlink:href="#ch"/><use xlink:href="#eo"/><use xlink:href="#sb"/></g>
+</svg>

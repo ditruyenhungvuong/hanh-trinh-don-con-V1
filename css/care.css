@@ -1,0 +1,62 @@
+/* Hành Trình Đón Con – css/care.css · Chủ: FE-8 Chăm mình & Hành trình (T-09, A2)
+   M16 thói quen 7 ngày (.care), M17 dòng thời gian (.journal), ô 🌱 ở M05. Chỉ dùng token của styles.css.
+   Không đỏ cho thói quen (AC-63): chấm "có" dùng --done (xanh lá = đã xong), "chưa" chỉ là vòng viền. */
+
+/* ===== Ô 🌱 ở Trang chính (UX 4.2: ô ngắn, cả hàng) ===== */
+.tile.care { grid-column: 1 / -1; min-height: 72px; background: var(--surface-2); }
+.tile.care .tile-sub { color: var(--muted); }
+/* Sau 20 giờ: 🌙 và 🌬️ cả hàng, 🤝 và 🌱 chia đôi; chỉ 3 ô thì ô nào cũng cả hàng (không để một ô lẻ nửa hàng) */
+.tiles.late .tile.care { grid-column: auto; }
+.tiles[data-n="3"] > * { grid-column: 1 / -1; }
+
+/* ===== M16 Chăm mình hôm nay ===== */
+.cr-card { padding: 6px 16px; }
+.cr-list { list-style: none; margin: 0; padding: 0; }
+.cr-item { padding: var(--sp-3) 0; border-bottom: 1px solid var(--line); }
+.cr-item:last-child { border-bottom: 0; }
+.cr-row { display: flex; align-items: flex-start; gap: var(--sp-3); min-height: 44px; cursor: pointer; font-weight: 600; }
+.cr-row input { width: 28px; height: 28px; margin: 0; flex: none; accent-color: var(--primary); cursor: pointer; }
+.cr-label { padding-top: 3px; }
+.cr-auto { font-weight: 400; font-size: var(--fs-small); color: var(--muted); }
+.cr-note { display: block; margin: 2px 0 0 40px; font-size: var(--fs-small); color: var(--muted); }
+.cr-wk { display: flex; align-items: center; flex-wrap: wrap; gap: var(--sp-3); margin: var(--sp-2) 0 0 40px; }
+.cr-week { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.cr-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface); }
+.cr-dot.on { background: var(--done); border-color: var(--done); }
+.cr-dot.today { outline: 2px solid var(--line-strong); outline-offset: 2px; }
+.cr-n { font-size: var(--fs-small); color: var(--muted); }
+.cr-off { margin: var(--sp-3) 0; }
+.cr-meds { margin: var(--sp-4) 0; }
+.cr-set { margin: var(--sp-3) 0; }
+.cr-set summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--primary); font-weight: 600; }
+.cr-sws { padding: 0 var(--sp-1); }
+.cr-sw { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-2) 0; border-bottom: 1px solid var(--line); }
+.cr-sw-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cr-sw-btn { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 44px; min-width: 44px; padding: 4px; background: none; border: 0;
+  border-radius: var(--radius-pill); font: 600 var(--fs-small) var(--font); color: var(--ink); cursor: pointer; flex: none; }
+.cr-sw-btn .switch { display: inline-block; }
+.cr-sw-btn .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 23px; height: 23px; border-radius: 50%;
+  background: var(--surface); box-shadow: var(--shadow); transition: transform .15s; }
+.cr-sw-btn[aria-checked="true"] .switch { background: var(--primary); border-color: var(--primary); }
+.cr-sw-btn[aria-checked="true"] .switch::after { transform: translateX(20px); }
+
+/* ===== M17 Hành trình của mình ===== */
+.jr-chips { margin: var(--sp-3) 0; }
+.jr-chips .chip[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--primary-ink); }
+.jr-chips .chip[aria-checked="true"]::before { content: "✓ "; }
+.jr-list { list-style: none; margin: 0; padding: 0; }
+.jr-day h2 { font-size: var(--fs-h3); color: var(--muted); margin: var(--sp-5) 0 var(--sp-2); }
+.jr-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: var(--sp-3) var(--sp-4); margin-bottom: var(--sp-3); }
+.jr-item:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.jr-head { font-weight: 600; margin: 0 0 4px; overflow-wrap: anywhere; }
+.jr-line, .jr-emo { margin: 0 0 4px; font-size: var(--fs-small); overflow-wrap: anywhere; }
+.jr-emo { color: var(--muted); }
+.jr-text { margin: var(--sp-2) 0; font-size: var(--fs-small); }
+.jr-text summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--primary); }
+.jr-text p { margin: 0 0 6px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.jr-del { display: flex; margin: var(--sp-2) 0 0 auto; min-height: 44px; padding: 8px 14px; font-size: var(--fs-small); }
+.jr-del.is-armed { background: var(--danger); color: var(--danger-ink); }
+.jr-count { text-align: center; margin: var(--sp-3) 0 0; }
+
+@media (prefers-reduced-motion: reduce) { .cr-sw-btn .switch::after { transition: none; } }

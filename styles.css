@@ -1,0 +1,494 @@
+/* Hành Trình Đón Con – styles.css · Chủ: FE-1 Lõi
+   Nguồn: docs/style/design-tokens-hung-dong.css @ 10/11/2026 (ux-designer, biến thể "Xanh dịu Hừng Đông") — dán NGUYÊN VĂN ở phần (1),
+   chép vào app vì GitHub Pages chỉ đẩy thư mục app. Token đổi ở docs/style thì chép lại phần (1).
+   Nguồn: apps/sung-suc/styles.css @ 10/11/2026 (@font-face, hộp thoại).
+   Khung T-00 (architect, 10/11/2026): (0) font tự host · (1) token + component chung của ux · (2) phần thêm của lõi.
+   Chế độ đêm: :root[data-mode="night"] (app.js đặt; màn theme 'night' và khi máy để tối, U1). Không URL ngoài origin. */
+
+/* ===== (0) Font tự host: Be Vietnam Pro 400 + 600 (OFL, assets/fonts/OFL.txt) ===== */
+@font-face { font-family: 'Be Vietnam Pro'; src: url('assets/fonts/be-vietnam-pro-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('assets/fonts/be-vietnam-pro-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+
+/* ===== (1) docs/style/design-tokens-hung-dong.css (nguyên văn) ===== */
+/* =========================================================
+   DESIGN TOKENS – biến thể "Xanh dịu Hừng Đông"
+   Dùng cho app "Hành Trình Đón Con" (cặp vợ chồng hiếm muộn, 11/2026),
+   anh Thông duyệt biến thể 09/11/2026 (PRD hiem-muon mục 3.3).
+
+   Lấy design-tokens-teal.css làm gốc: giữ nguyên cấu trúc và tên biến
+   (--bg, --surface, --primary, --teal, --warm, --danger…) để frontend-dev
+   dùng cùng cách. Khác teal ở ba chỗ:
+   1. Thêm màu nhấn HỒNG ĐÀO (--peach*) cho chỗ ấm: mục Hai ta, trái tim,
+      hũ bình an, má capybara. Không dùng hồng mẹ bầu (rose), vì gợi mang thai.
+   2. Thêm CHẾ ĐỘ ĐÊM DỊU (:root[data-mode="night"]): nền xanh than, chữ kem,
+      không có trắng gắt. Bắt buộc cho M13 Trước khi ngủ, M13b, M13c, M14
+      Trình chiếu đêm. App bật bằng JS: document.documentElement.dataset.mode = 'night'.
+      Nếu anh đồng ý (câu hỏi U1 trong hiem-muon-ux.md), JS cũng bật khi máy
+      đang ở chế độ tối (matchMedia('(prefers-color-scheme: dark)')).
+   3. Sửa sẵn các chỗ token teal chưa đạt: pill Hỗ trợ và chip lên 44 px,
+      thêm --line-strong (viền ô nhập đạt ≥ 3:1), --primary-hover cho link trên
+      nền hồng đào.
+
+   Quy tắc màu:
+   - Nút chính luôn --primary (xanh lục). Mỗi màn một nút chính.
+   - Hồng đào chỉ là màu nhấn ấm, KHÔNG làm nút chính, KHÔNG dùng cho chữ
+     thường ở bản đồ họa (--peach), chữ hồng đào dùng --peach-ink.
+   - Xanh lá --done chỉ cho "đã xong" (tick, chặng đã qua).
+   - Đỏ --danger chỉ cho xóa dữ liệu và nút gọi 115 / trang khẩn.
+     Không dùng đỏ cho mức "lòng mình" thấp, không tô màu 10 chấm theo mức.
+
+   Font: Be Vietnam Pro 400 + 600. ĐỀ XUẤT TỰ HOST (woff2 trong fonts/),
+   không gọi Google Fonts, cho đúng lời hứa "không gửi gì lên mạng".
+   App này đã tự host (assets/fonts, xem @font-face bên dưới).
+
+   ---------------------------------------------------------
+   TỈ LỆ TƯƠNG PHẢN (công thức WCAG 2.1, độ chói tương đối sRGB, làm tròn 2 số)
+   Chữ thường cần ≥ 4,5:1; chữ lớn (≥ 24 px, hoặc ≥ 18,7 px đậm) và
+   thành phần phi văn bản (viền ô, icon, vòng focus) cần ≥ 3:1.
+
+   CHẾ ĐỘ SÁNG (nền kem #FBF8F1, card trắng)
+   --ink #1E2B2A          trên trắng 14,64 · trên kem 13,81 · trên --peach-soft 12,95   AAA
+   --muted #56666A        trên trắng 5,99 · kem 5,65 · --surface-2 5,54 · --peach-soft 5,30   AA
+   --primary #2E7D74      chữ trắng trên nó 4,88 · nó làm chữ trên kem 4,60   AA
+                          nó làm chữ trên --peach-soft 4,32 → KHÔNG đạt, dùng --primary-hover
+   --primary-hover #276B63  chữ trắng trên nó 6,23 · nó trên --peach-soft 5,51   AA
+   --primary-soft-ink #1D5A53 trên --primary-soft #DDEFEB 6,68   AA
+   --teal-strong #2C7695  chữ trắng trên nó 5,10   AA
+   --pill-support-ink #1F5F78 trên --teal-soft #E1F0F6 6,07   AA
+   --warm-ink #96551A     trên kem 5,50   AA
+   --focus #B86A1E        trên trắng 4,10 · trên kem 3,87   (phi văn bản ≥ 3:1)
+   --line-strong #7C8C88  trên trắng 3,52 · trên kem 3,32   (viền ô, viền chấm ≥ 3:1)
+   --peach #F2A58E        trên trắng 1,99 → CHỈ TRANG TRÍ (má capybara, tim, nền hũ)
+                          --ink trên nó 7,35 (nếu cần chữ trên nền đào)
+   --peach-strong #C46A50 trên trắng 3,80 · kem 3,59   (viền, icon ≥ 3:1; không cho chữ thường)
+   --peach-ink #9E4632    trên trắng 6,22 · kem 5,87 · --peach-soft 5,50   AA
+   --peach-soft #FDEEE8   nền thẻ Hai ta; --ink 12,95 · --muted 5,30 · --peach-ink 5,50
+   --done #2E7D32         trên trắng 5,13 · kem 4,84 · chữ trắng trên nó 5,13 · trên --done-soft 4,56   AA
+   --danger #B3261E       chữ trắng trên nó 6,54 · nó trên --danger-soft 5,55   AA
+   Ô "🌙 Trước khi ngủ" ở Trang chính (nền đêm giữa trang sáng):
+                          nền #1C2834, chữ #F2EADB 12,53 · chữ phụ #B5BEC4 7,93   AAA
+   Ô chính gradient #2E7D74 → #2C7695, chữ trắng ≥ 4,88 ở mọi điểm   AA
+   Toast nền #1E2B2A chữ trắng 14,64
+
+   CHẾ ĐỘ ĐÊM (nền #141E29, card #1C2834, nền trình chiếu #0E1620)
+   --ink #F2EADB          trên nền 14,08 · card 12,53 · --surface-2 #233140 11,08   AAA
+   --read-ink #E6DCCB     trên nền trình chiếu 13,40 · trên nền 12,40   AAA
+   --read-ink-dim #BDB3A3 ("Chữ dịu hơn") trên nền trình chiếu 8,79   AAA
+   --muted #B5BEC4        trên nền 8,92 · card 7,93 · --surface-2 7,02 · trình chiếu 9,64   AA
+   --line-strong #8696A3  trên card 4,92 · nền 5,54 · trình chiếu 5,98   (≥ 3:1)
+   --primary #7CC9BB      chữ #0F1D1B trên nó 9,02 · nó làm chữ trên card 7,79 · trên nền 8,76
+   --primary-soft #1F3B38 --ink trên nó 10,09
+   --teal #8CC8E0         trên card 8,17 · chữ #0F1D1B trên nó 9,45
+   --teal-soft #1F3442    chữ pill Hỗ trợ #CFE8F2 trên nó 10,12
+   --peach #F0A892        trên card 7,64 · nền 8,59 (đêm đủ sáng để làm chữ)
+   --peach-soft #3A2C2E   --ink trên nó 11,12 · --peach trên nó 6,79
+   --focus #F0B060        trên nền 8,89 · card 7,90
+   --warm-ink #F2C07A     trên card 8,98 · trên --warm-soft #3A3020 7,76
+   --done #8FD49A         trên card 8,59
+   --danger #FF8A80       làm chữ trên card 6,56 · trên --danger-soft #3A1F1D 6,60
+                          làm nền nút (115), chữ #2A0E0B trên nó 7,89
+   Toast nền #F2EADB chữ #141E29 14,08
+   QA đo lại bằng công cụ khi có bản chạy (axe / DevTools), ghi vào báo cáo.
+   ========================================================= */
+
+:root {
+  /* ===== Nền và chữ (giữ teal) ===== */
+  --bg: #FBF8F1;              /* kem sáng, không trắng gắt */
+  --surface: #FFFFFF;
+  --surface-2: #F2F7F5;
+  --ink: #1E2B2A;
+  --muted: #56666A;
+  --line: #DDE6E2;            /* chỉ để kẻ chia, KHÔNG làm viền nhận diện ô nhập (≈ 1,3:1) */
+  --line-strong: #7C8C88;     /* viền ô nhập, chip, 10 chấm: 3,52:1 trên trắng */
+
+  /* ===== Xanh lục: nút chính, chọn, link ===== */
+  --primary: #2E7D74;
+  --primary-hover: #276B63;   /* hover; cũng là màu link trên nền hồng đào (5,51:1) */
+  --primary-ink: #FFFFFF;
+  --primary-soft: #DDEFEB;
+  --primary-soft-ink: #1D5A53;
+
+  /* ===== Teal: Hỗ trợ, thẻ "cần người hỗ trợ" ===== */
+  --teal: #3A8FB0;            /* đồ họa, viền; chữ trắng trên nó chỉ 3,66 → nút có chữ dùng --teal-strong */
+  --teal-strong: #2C7695;
+  --teal-soft: #E1F0F6;
+  --pill-support-ink: #1F5F78;
+
+  /* ===== Cam ấm: focus, cảnh báo nhẹ, chặng đang làm ===== */
+  --warm: #E9A15B;            /* đồ họa trang trí; chữ cam dùng --warm-ink */
+  --warm-soft: #FDF1E3;
+  --warm-ink: #96551A;
+  --focus: #B86A1E;
+
+  /* ===== Hồng đào: màu nhấn ấm (Hai ta, tim, hũ, má capybara) ===== */
+  --peach: #F2A58E;           /* chỉ trang trí */
+  --peach-strong: #C46A50;    /* viền thẻ Hai ta đang chọn, icon tim (3,80:1) */
+  --peach-ink: #9E4632;       /* chữ màu đào: tiêu đề nhỏ mục Hai ta */
+  --peach-soft: #FDEEE8;      /* nền thẻ, ô Hai ta */
+
+  /* ===== Đã xong ===== */
+  --done: #2E7D32;
+  --done-soft: #E8F5E9;
+
+  /* ===== Đỏ: chỉ xóa dữ liệu và 115 ===== */
+  --danger: #B3261E;
+  --danger-soft: #FCE8E6;
+  --danger-ink: #FFFFFF;      /* chữ trên nút đỏ */
+
+  /* ===== Nhân vật SVG: hai bé capybara, người ngồi thả lỏng ===== */
+  --capy-fur: #C98A55;        /* cùng tông nâu cam với bộ 9 ảnh capybara của Check-in Mẹ Bầu */
+  --capy-fur-dark: #8E5A33;
+  --capy-belly: #EBC9A2;
+  --capy-nose: #6B4A35;
+  --capy-blush: var(--peach);
+  --capy-outline: transparent; /* đêm: thêm viền để không chìm */
+  --capy-scarf-a: var(--peach-strong);  /* bé A quàng khăn đào */
+  --capy-scarf-b: var(--primary);       /* bé B đội lá xanh – không gắn giới */
+  --scrub: #6CBFB2;           /* giữ tên để tương thích teal: áo người ngồi trong bài Thả lỏng */
+  --scrub-dark: #4E9E92;
+  --skin: #F2C9A5;            /* bàn tay trong bài Bàn tay ấm */
+
+  /* ===== Hình thở, mây, hũ ===== */
+  --orb-1: #E7F6F2; --orb-2: #7CC4B8; --orb-3: #5BAEA1;
+  --cloud: #FFFFFF; --cloud-edge: #C9D6D3;
+  --jar-glass: #DDEFEB; --jar-edge: var(--primary); --heart: var(--peach-strong);
+
+  /* ===== Trình chiếu chữ (bài đêm, Bàn tay ấm bản ngày) ===== */
+  --reader-bg: var(--surface);
+  --read-ink: var(--ink);
+  --read-ink-dim: var(--muted);
+  --toast-bg: #1E2B2A;
+  --toast-ink: #FFFFFF;
+  --header-glass: rgba(251, 248, 241, .94);
+
+  /* ===== Chữ (rem để người dùng phóng to được) ===== */
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-h1: 1.5rem;            /* 24 px; ≤ 360 px còn 22 */
+  --fs-h2: 1.15rem;           /* 18,4 px */
+  --fs-h3: 1rem;              /* 16 px đậm 600 */
+  --fs-body: 1rem;            /* 16 px, line-height 1.55 */
+  --fs-small: .875rem;        /* 14 px */
+  --fs-fine: .8125rem;        /* 13 px – tối thiểu cho chữ có nghĩa */
+  --fs-btn: 1rem;
+  --fs-read: 1.375rem;        /* 22 px – chữ bài đêm (PRD: ≥ 20 px) */
+  --fs-read-lg: 1.625rem;     /* 26 px – khi người dùng chọn "Chữ to hơn" */
+  --lh-read: 1.7;
+
+  /* ===== Khoảng cách (thang 4) ===== */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+
+  /* ===== Bo góc, bóng, vùng chạm ===== */
+  --radius: 18px;             /* card */
+  --radius-sm: 12px;          /* ô nhập, hộp nhỏ */
+  --radius-btn: 14px;
+  --radius-pill: 999px;
+  --shadow: 0 2px 10px rgba(30, 60, 55, .07);
+  --tap: 48px;                /* nút */
+  --tap-min: 44px;            /* chip, link, chấm, hàng */
+  --header-h: 56px;
+  --col-max: 640px;
+  color-scheme: light;
+}
+
+/* =========================================================
+   CHẾ ĐỘ ĐÊM DỊU – M13, M13b, M13c, M14 (và cả app nếu anh chọn U1)
+   Nền xanh than, chữ kem. Không có #FFFFFF ở đâu cả.
+   ========================================================= */
+:root[data-mode="night"] {
+  --bg: #141E29;
+  --surface: #1C2834;
+  --surface-2: #233140;
+  --ink: #F2EADB;
+  --muted: #B5BEC4;
+  --line: #34424F;
+  --line-strong: #8696A3;
+
+  --primary: #7CC9BB;
+  --primary-hover: #92D4C8;
+  --primary-ink: #0F1D1B;
+  --primary-soft: #1F3B38;
+  --primary-soft-ink: #F2EADB;
+
+  --teal: #8CC8E0;
+  --teal-strong: #8CC8E0;     /* nút có chữ: chữ tối #0F1D1B, 9,45:1 */
+  --teal-soft: #1F3442;
+  --pill-support-ink: #CFE8F2;
+
+  --warm: #F0B060;
+  --warm-soft: #3A3020;
+  --warm-ink: #F2C07A;
+  --focus: #F0B060;
+
+  --peach: #F0A892;
+  --peach-strong: #F0A892;
+  --peach-ink: #F0A892;
+  --peach-soft: #3A2C2E;
+
+  --done: #8FD49A;
+  --done-soft: #1F3A2A;
+
+  --danger: #FF8A80;
+  --danger-soft: #3A1F1D;
+  --danger-ink: #2A0E0B;
+
+  --capy-outline: #8696A3;
+  --orb-1: #2A4A47; --orb-2: #4E8F86; --orb-3: #3B7069;
+  --cloud: #2E3D4C; --cloud-edge: #8696A3;
+  --jar-glass: #1F3B38;
+
+  --reader-bg: #0E1620;
+  --read-ink: #E6DCCB;
+  --read-ink-dim: #BDB3A3;
+  --toast-bg: #F2EADB;
+  --toast-ink: #141E29;
+  --header-glass: rgba(20, 30, 41, .94);
+  --shadow: 0 2px 10px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+
+/* ===== Nền tảng ===== */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; font-size: 16px; scroll-padding-top: calc(var(--header-h) + 12px); }   /* B-02 */
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--fs-body)/1.55 var(--font); min-height: 100vh; overflow-x: hidden; -webkit-tap-highlight-color: transparent; transition: background-color .4s ease, color .4s ease; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; font-weight: 600; }
+h1 { font-size: var(--fs-h1); } h2 { font-size: var(--fs-h2); } h3 { font-size: var(--fs-h3); }
+h1:focus { outline: none; }  /* h1 nhận focus bằng JS khi đổi màn, không cần vòng */
+p { margin: 0 0 .75em; }
+a { color: var(--primary); }
+small { color: var(--muted); font-weight: 400; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link { position: absolute; left: -999px; top: calc(var(--header-h) + 8px); background: var(--surface); color: var(--ink); padding: 8px 12px; z-index: 100; }
+.skip-link:focus { left: 8px; }
+
+/* ===== Header dính: [‹] tên màn [🤝 Hỗ trợ] ===== */
+.app-header { position: sticky; top: 0; z-index: 20; background: var(--header-glass); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar { max-width: var(--col-max); margin: 0 auto; display: flex; align-items: center; gap: 8px; padding: 6px 12px; min-height: var(--header-h); }
+.bar-title { flex: 1; min-width: 0; font-weight: 600; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.icon-btn { width: var(--tap-min); height: var(--tap-min); border-radius: 12px; border: 0; background: transparent; color: var(--ink); font-size: 22px; display: grid; place-items: center; cursor: pointer; flex: none; }
+.brand-mark { width: var(--tap-min); height: var(--tap-min); border-radius: 12px; background: var(--primary-soft); display: grid; place-items: center; flex: none; }
+.pill-support { height: var(--tap-min); padding: 0 14px; border-radius: var(--radius-pill); border: 1.5px solid var(--teal); background: var(--teal-soft); color: var(--pill-support-ink); font: 600 14px/1 var(--font); cursor: pointer; flex: none; }   /* teal gốc 36 px → 44 px */
+.mode-strip { text-align: center; font-size: var(--fs-fine); padding: 4px 12px; color: var(--muted); background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.app-main { max-width: var(--col-max); margin: 0 auto; padding: 16px 16px 48px; }
+
+/* ===== Nút: primary / teal / soft / ghost / peach / danger / link ===== */
+.btn { min-height: var(--tap); padding: 10px 18px; border-radius: var(--radius-btn); border: 1.5px solid transparent; font: 600 var(--fs-btn)/1.25 var(--font); cursor: pointer; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; transition: transform .1s, background-color .2s; }
+.btn:active { transform: scale(.98); }
+.btn small { font-weight: 400; font-size: var(--fs-fine); color: inherit; }   /* B-03: trắng/--primary 4,88 */
+.btn.primary { background: var(--primary); color: var(--primary-ink); }
+.btn.primary:hover { background: var(--primary-hover); }
+.btn.teal { background: var(--teal-strong); color: #FFFFFF; }
+.btn.soft { background: var(--primary-soft); color: var(--primary-soft-ink); }
+.btn.ghost { background: var(--surface); border-color: var(--line-strong); color: var(--ink); }
+.btn.peach { background: var(--peach-soft); border-color: var(--peach-strong); color: var(--peach-ink); }
+.btn.danger { background: var(--danger); color: var(--danger-ink); }
+.btn.danger-soft { background: var(--danger-soft); color: var(--danger); border-color: var(--danger); }
+.btn.block { width: 100%; margin: 8px 0; }
+.btn.big { width: 100%; min-height: 72px; font-size: 1.0625rem; }
+.btn[aria-disabled="true"], .btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn[aria-busy="true"] { cursor: progress; opacity: .85; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.btn-row > .btn { flex: 1 1 140px; }
+.link { background: none; border: 0; color: var(--primary); font: 500 15px var(--font); cursor: pointer; min-height: var(--tap-min); min-width: var(--tap-min); padding: 10px 4px; text-decoration: underline; text-underline-offset: 3px; }
+:root[data-mode="night"] .btn.teal { color: var(--primary-ink); }
+
+/* ===== Card và khối chữ ===== */
+.card { background: var(--surface); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom: 14px; border: 1px solid var(--line); }
+.card.together { background: var(--peach-soft); border-color: var(--peach-strong); }   /* mục Hai ta */
+.card.together a, .card.together .link { color: var(--primary-hover); }               /* --primary chỉ 4,32 trên đào */
+.fine { font-size: var(--fs-fine); color: var(--muted); }
+.lead { font-size: 1.0625rem; color: var(--muted); }
+.eyebrow { display: inline-block; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--primary-soft); color: var(--primary-soft-ink); font-size: var(--fs-fine); font-weight: 600; margin-bottom: 8px; }
+.label { font-weight: 600; display: block; margin: 12px 0 6px; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-soft-ink); font-weight: 600; flex: none; }
+.section-title { font-size: 1.0625rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin: 0 0 4px; }
+.section-hint { font-size: var(--fs-small); color: var(--muted); font-style: italic; margin: 0 0 12px; }
+.section-divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); margin: 24px 0; }
+.notice { background: var(--primary-soft); color: var(--ink); padding: 10px 12px; border-radius: var(--radius-sm); }
+.know-card { background: var(--surface-2); border-left: 4px solid var(--primary); border-radius: var(--radius-sm); padding: 12px 14px; position: relative; }   /* thẻ "Điều nên biết" */
+.gentle { color: var(--warm-ink); background: var(--warm-soft); padding: 8px 12px; border-radius: var(--radius-sm); font-size: var(--fs-small); }
+.safety-line { font-size: var(--fs-fine); color: var(--muted); border-left: 3px solid var(--teal); padding-left: 10px; }
+.human-card { background: var(--teal-soft); border: 1px solid var(--teal); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; }   /* "Bạn không phải một mình" */
+.human-card .link { color: var(--pill-support-ink); }   /* B-03: 6,07 sáng · 10,12 đêm */
+.body-card { background: var(--warm-soft); border-left: 4px solid var(--focus); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; }  /* "Chuyện này cần bác sĩ" */
+.urgent-box { border-left: 5px solid var(--danger); background: var(--danger-soft); border-radius: 14px; padding: 14px; margin: 12px 0; }
+.draft-note { font-size: 12px; color: var(--muted); border-top: 1px dashed var(--line-strong); margin-top: 24px; padding-top: 10px; }
+.error-text { color: var(--warm-ink); font-size: var(--fs-small); min-height: 1em; margin: 4px 0; }   /* lỗi nhập: cam, không đỏ */
+
+/* ===== Ô nhập, công tắc ===== */
+input[type=text], input:not([type]), textarea, select { width: 100%; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); padding: 12px; min-height: var(--tap); }
+textarea { min-height: 112px; resize: vertical; }
+::placeholder { color: var(--muted); font-style: italic; opacity: 1; }
+input:focus, textarea:focus, select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px var(--primary-soft); }
+.check { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; min-height: var(--tap-min); cursor: pointer; }
+.check input { width: 24px; height: 24px; margin: 2px 0 0; accent-color: var(--primary); flex: none; }
+.switch { position: relative; width: 52px; height: 32px; border-radius: 999px; background: var(--surface-2); border: 1.5px solid var(--line-strong); flex: none; }
+.switch[aria-checked="true"] { background: var(--primary); border-color: var(--primary); }
+input[type=range] { width: 100%; accent-color: var(--primary); height: var(--tap-min); }
+
+/* ===== Chip (tình huống, phút, chọn nhanh) ===== */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.chip { min-height: var(--tap-min); padding: 8px 14px; border-radius: var(--radius-pill); border: 1.5px solid var(--line-strong); background: var(--surface); font: 500 var(--fs-small) var(--font); color: var(--ink); cursor: pointer; }   /* teal gốc 40 px → 44 px */
+.chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--primary-ink); }
+.chip[aria-pressed="true"]::before { content: "✓ "; }   /* không chỉ đổi màu */
+
+/* ===== 10 chấm "lòng mình lúc này" – MỘT màu, không tô theo mức ===== */
+.dots { display: grid; grid-template-columns: repeat(5, 48px); justify-content: space-between; row-gap: 12px; margin: 8px 0 4px; }
+.dot { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface); color: var(--ink); font: 600 1rem var(--font); cursor: pointer; transition: transform .15s; }
+.dot[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--primary-ink); box-shadow: 0 0 0 4px var(--primary-soft); transform: scale(1.08); }
+.dots[aria-disabled="true"] .dot { opacity: .45; }
+.dots-ends { display: flex; justify-content: space-between; font-size: var(--fs-fine); color: var(--muted); }
+@media (min-width: 560px) { .dots { grid-template-columns: repeat(10, 44px); } .dot { width: 44px; height: 44px; } }
+
+/* ===== Lưới thẻ capybara (9 ảnh + Tự trách + Chưa rõ) ===== */
+.capy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.capy-card { position: relative; min-height: 104px; border: 2px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); padding: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; color: var(--ink); font: 500 var(--fs-small) var(--font); }
+.capy-card img, .capy-card .capy-emoji { width: 76px; height: 76px; object-fit: contain; border-radius: 12px; display: grid; place-items: center; font-size: 44px; background: var(--surface-2); }
+.capy-card[aria-pressed="true"] { border-color: var(--primary); border-width: 3px; background: var(--primary-soft); }
+.capy-card .tick { position: absolute; top: -6px; right: -6px; width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: var(--primary-ink); display: none; place-items: center; font-size: 14px; font-weight: 700; }
+.capy-card[aria-pressed="true"] .tick { display: grid; }
+:root[data-mode="night"] .capy-card img { filter: brightness(.88); }   /* ảnh PNG nền trắng, giảm chói */
+
+/* ===== Ô trang chính ===== */
+.tiles { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; text-align: left; cursor: pointer; font: inherit; color: var(--ink); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px; min-height: 120px; }
+.tile .tile-sub { font-size: var(--fs-small); color: var(--muted); }
+.tile.main { grid-column: 1 / -1; background: linear-gradient(135deg, #2E7D74, #2C7695); color: #FFFFFF; border: 0; }
+.tile.main .tile-sub { color: #FFFFFF; }   /* B-03: ≥ 4,88 */
+.tile.night { background: #1C2834; color: #F2EADB; border: 0; }           /* ô 🌙 mang sẵn màu đêm */
+.tile.night .tile-sub { color: #B5BEC4; }
+.tile.together { background: var(--peach-soft); border-color: var(--peach-strong); }
+.tile.together .tile-sub { color: var(--peach-ink); }
+@media (max-width: 360px) { .tiles { grid-template-columns: 1fr; } :root { --fs-h1: 1.375rem; } .card { padding: 14px; } }
+
+/* ===== Bản đồ chặng (DỪNG 5 cho hai ta) ===== */
+.jmap { display: flex; justify-content: space-between; align-items: center; list-style: none; padding: 0; margin: 8px 0 16px; position: relative; }
+.jmap::before { content: ""; position: absolute; left: 24px; right: 24px; top: 50%; height: 2px; background: var(--line-strong); z-index: 0; }
+.jmap-node { position: relative; z-index: 1; width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface); display: grid; place-items: center; font-size: 22px; cursor: pointer; }
+.jmap-node.done { background: var(--primary-soft); border-color: var(--done); }
+.jmap-node.done::after { content: "✓"; position: absolute; right: -4px; bottom: -4px; width: 20px; height: 20px; border-radius: 50%; background: var(--done); color: #FFFFFF; font-size: 12px; display: grid; place-items: center; }
+.jmap-node.skipped { opacity: .55; border-style: dashed; }
+.jmap-node[aria-current="step"] { border: 3px solid var(--focus); box-shadow: 0 0 0 4px var(--warm-soft); }
+
+/* ===== Quả cầu thở, mây, hũ bình an ===== */
+.orb { border-radius: 50%; background: radial-gradient(circle at 40% 35%, var(--orb-1), var(--orb-2) 70%, var(--orb-3)); transition: transform 4s ease-in-out, opacity 4s ease-in-out; }
+.cloud { background: var(--cloud); border: 1.5px solid var(--cloud-edge); border-radius: 999px; padding: 14px 20px; color: var(--ink); }
+.jar { border: 2px solid var(--jar-edge); background: var(--jar-glass); border-radius: 18px 18px 28px 28px; }
+
+/* ===== Trình chiếu chữ (M14, Bàn tay ấm bản ngày) ===== */
+.reader { background: var(--reader-bg); color: var(--read-ink); min-height: calc(100dvh - var(--header-h)); display: flex; flex-direction: column; }
+.reader.dim { --read-ink: var(--read-ink-dim); }
+.reader-stage { flex: 1; display: grid; place-items: center; padding: 24px 20px; cursor: pointer; }
+.reader-block { font-size: var(--fs-read); line-height: var(--lh-read); text-align: center; max-width: 30ch; margin: 0; transition: opacity .8s ease; }
+.reader.large .reader-block { font-size: var(--fs-read-lg); }
+.reader-progress { height: 3px; background: var(--line); margin: 0 20px; border-radius: 2px; overflow: hidden; }
+.reader-progress > span { display: block; height: 100%; background: var(--muted); }
+.reader-foot { position: sticky; bottom: 0; background: var(--reader-bg); padding: 10px 16px calc(12px + env(safe-area-inset-bottom)); display: grid; gap: 8px; border-top: 1px solid var(--line); }
+.read-aloud { font-size: var(--fs-read); line-height: var(--lh-read); }      /* Đọc cho nhau nghe: cả bài cuộn */
+.pause-mark { display: block; font-style: italic; font-size: var(--fs-small); color: var(--muted); margin: 6px 0 18px; }
+
+/* ===== Chân dính trình phát ban ngày ===== */
+.player-foot { position: sticky; bottom: 0; background: var(--bg); padding: 10px 0 calc(10px + env(safe-area-inset-bottom)); display: grid; gap: 8px; border-top: 1px solid var(--line); }
+
+/* ===== Toast ===== */
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translate(-50%, 150%); background: var(--toast-bg); color: var(--toast-ink); padding: 12px 18px; border-radius: 14px; font-size: var(--fs-small); max-width: calc(100% - 32px); transition: transform .3s, opacity .3s; z-index: 60; opacity: 0; pointer-events: none; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+/* ===== Giảm chuyển động ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .orb { transform: none !important; }          /* quả cầu không nở/thu, JS chỉ đổi --orb độ đậm + nhãn pha */
+  .dot[aria-checked="true"] { transform: none; }
+}
+
+/* ===== (2) Phần thêm của lõi (FE-1) ===== */
+:root { --backdrop: rgba(20, 30, 41, .45); }
+:root[data-mode="night"] { --backdrop: rgba(0, 0, 0, .6); }
+.toast { display: flex; align-items: center; gap: var(--sp-3); }
+.toast-act { pointer-events: auto; }   /* B-01: toast không chặn chạm, trừ nút */
+.toast-act { flex: none; min-height: var(--tap-min); padding: 0 8px; border: 0; background: none; color: inherit; font: 600 var(--fs-small) var(--font); text-decoration: underline; cursor: pointer; }
+
+/* Hộp thoại alertdialog (L08, M13a, M13b) */
+.dlg-backdrop { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; overflow-y: auto;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); background: var(--backdrop); }
+.dlg { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: var(--sp-3); padding: var(--sp-6) var(--sp-5);
+  background: var(--surface); color: var(--ink); border-radius: var(--radius); box-shadow: var(--shadow); }
+.dlg-title { font-size: var(--fs-h2); margin: 0; }
+.dlg-title:focus { outline: none; }
+.dlg-body p:last-child { margin-bottom: 0; }
+.btn-col { display: grid; gap: 8px; }
+@media (min-width: 600px) { .dlg-backdrop { align-items: center; } }
+
+/* ===== (2b) Màn chung T-01 (FE-1): chữ căn giữa, nút liên kết, hai bé capybara ===== */
+.center { text-align: center; }
+.btn-col.choose { margin: 16px 0; }
+a.btn { text-decoration: none; }
+.btn.danger.big { min-height: 56px; }          /* nút 📞 115 cao 56 (UX 6.2) */
+.pair { display: block; margin: 0 auto var(--sp-3); object-fit: contain; }
+.pair-fb { display: grid; place-items: center; margin: 0 auto var(--sp-3); border-radius: var(--radius); background: var(--surface-2); font-size: 28px; }
+.s44 { width: 44px; height: 44px; } .s96 { width: 96px; height: 96px; } .s120 { width: 120px; height: 120px; }
+.brand-mark .pair, .brand-mark .pair-fb { margin: 0; font-size: 14px; background: none; }
+.plain-list { padding-left: 20px; margin: 0 0 12px; }
+.plain-list li { margin-bottom: 6px; }
+.link-list { list-style: none; padding: 0; margin: 12px 0; }
+.link-list .link { display: block; width: 100%; text-align: left; }
+
+/* Thẻ chọn (M03, M04): chọn = viền đậm + ✓, không chỉ đổi màu */
+.choices { display: grid; gap: 10px; margin: 12px 0; }
+.choice { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; min-height: 56px; padding: 12px 48px 12px 16px;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-btn); background: var(--surface); color: var(--ink); font: 600 var(--fs-body)/1.35 var(--font); text-align: left; cursor: pointer; }
+.choice-sub { font-weight: 400; font-size: var(--fs-small); color: var(--muted); }
+.choice[aria-checked="true"], .choice[aria-current="true"] { border-color: var(--primary); box-shadow: inset 0 0 0 1.5px var(--primary); background: var(--primary-soft); }
+.choice[aria-checked="true"]::after, .choice[aria-current="true"]::after { content: "✓"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: var(--primary-ink); display: grid; place-items: center; font-size: 14px; }
+.choice.suggested { border-color: var(--focus); border-style: dashed; border-width: 2px; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: var(--radius-pill); background: var(--warm-soft); color: var(--warm-ink); font-size: var(--fs-fine); font-weight: 600; }
+
+/* Trang chính: dòng chặng đường, thẻ Điều nên biết, ô lớn */
+.stage-line { display: flex; align-items: center; gap: 8px; min-height: var(--tap-min); padding: 2px 6px 2px 14px; margin: 12px 0;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); font-size: var(--fs-small); }
+.stage-line > span { flex: 1; min-width: 0; }
+.stage-line .link { flex: none; }
+.know-card { margin: 12px 0; padding-right: 52px; }
+.know-card p:last-of-type { margin-bottom: 0; }
+.know-title { font-weight: 600; margin-bottom: 4px; }
+.know-close { position: absolute; top: 2px; right: 2px; font-size: 16px; }
+.late-line { color: var(--muted); font-size: var(--fs-small); margin: 16px 0 8px; }
+.tiles { margin: 12px 0; }
+.tiles[data-n="1"] > *, .tiles[data-n="2"] > *, .tiles.late > :first-child { grid-column: 1 / -1; }
+
+/* L13 thẻ lỗi bộ nhớ (đầu M05, M18) */
+.store-wrap { max-width: var(--col-max); margin: 0 auto; padding: 8px 16px 0; }
+.store-alert { position: relative; padding: 10px 48px 10px 14px; border-left: 4px solid var(--focus); border-radius: var(--radius-sm); background: var(--warm-soft); color: var(--ink); font-size: var(--fs-small); }
+.store-alert p { margin: 0; }
+.store-close { position: absolute; top: 2px; right: 2px; font-size: 16px; }
+
+/* L02 bảng thông tin nhận diện */
+.pii-panel { margin: 10px 0; padding: 12px 14px; border-left: 4px solid var(--focus); border-radius: var(--radius-sm); background: var(--warm-soft); color: var(--ink); }
+.pii-title { font-weight: 600; margin-bottom: 4px; }
+.pii-panel ul { margin: 4px 0 8px; padding-left: 18px; }
+.pii-panel mark { background: none; color: inherit; font-weight: 600; overflow-wrap: anywhere; }
+.pii-panel .btn-row > .btn { flex: 1 1 96px; }
+
+/* Thẻ capybara, 10 chấm (phần thêm) */
+.capy-card .capy-name { font-size: var(--fs-fine); line-height: 1.2; text-align: center; }
+.capy-picked { min-height: 1.5em; margin: 8px 0 4px; font-size: var(--fs-small); color: var(--muted); }
+.dots-val { min-height: 1.5em; margin: 0 0 4px; text-align: center; font-weight: 600; }
+
+/* Trang Hỗ trợ: kênh cơ sở; Về app: trạng thái duyệt */
+.urgent-box h2 { font-size: var(--fs-h3); }
+.urgent-box .plain-list { margin-top: 10px; }
+.ch-list, .rev-list { list-style: none; padding: 0; margin: 0 0 12px; }
+.ch-list li, .rev-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.rev-list li span:last-child { color: var(--muted); font-size: var(--fs-small); }
+
+/* 320–360 px: chấm 44, ảnh thẻ 64 (UX 4.3); ≥ 768 px giữ cột 640 */
+@media (max-width: 360px) {
+  .app-main { padding: 12px 12px 40px; }
+  .dots { grid-template-columns: repeat(5, 44px); }
+  .dot { width: 44px; height: 44px; }
+  .capy-card img, .capy-card .capy-emoji { width: 64px; height: 64px; font-size: 36px; }
+  .pill-support { padding: 0 10px; }
+}

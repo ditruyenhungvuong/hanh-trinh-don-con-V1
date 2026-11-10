@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 44" role="img" aria-labelledby="t"><title id="t">Trái tim</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Tim hồng đào cho Hũ bình an (C1 chặng 5). Đêm đổi màu qua prefers-color-scheme. -->
+<style>.h{fill:#F2A58E;stroke:#C46A50}@media (prefers-color-scheme:dark){.h{fill:#F0A892;stroke:#F7C9BA}}</style>
+<path class="h" stroke-width="2.5" stroke-linejoin="round" d="M24 40C10 31 3 23 3 14a10 10 0 0 1 21-4a10 10 0 0 1 21 4c0 9-7 17-21 26z"/>
+<path d="M10 13a5 5 0 0 1 5-5" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="t"><title id="t">Hai trái tim cạnh nhau</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Icon ô "Hai ta" (.tile.together nền hồng đào). Đêm đổi màu qua prefers-color-scheme. -->
+<style>.a{fill:#F2A58E;stroke:#C46A50}.b{fill:#FDEEE8;stroke:#C46A50}@media (prefers-color-scheme:dark){.a{fill:#F0A892;stroke:#F0A892}.b{fill:#3A2C2E;stroke:#F0A892}}</style>
+<g stroke-width="2.5" stroke-linejoin="round"><path class="a" d="M17 38C7 31 3 25 3 19a7 7 0 0 1 14-3a7 7 0 0 1 14 3c0 6-4 12-14 19z"/><path class="b" d="M31 42c-10-7-14-13-14-19a7 7 0 0 1 14-3a7 7 0 0 1 14 3c0 6-4 12-14 19z" fill-opacity=".9"/></g>
+</svg>

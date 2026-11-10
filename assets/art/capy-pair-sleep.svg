@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" role="img" aria-labelledby="t"><title id="t">Hai bé capybara nằm cuộn cạnh nhau ngủ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Tư thế sleep: M13, kết M14 (tông đêm, có viền). Màu theo token Hừng Đông; đêm đổi qua prefers-color-scheme (trang đêm đặt color-scheme: dark). -->
+<style>.o{stroke:#8E5A33}.k{fill:#F2A58E}.a{fill:#C46A50}.l{fill:#2E7D74}.v{stroke:#2E7D74}.d{fill:#9CC7B5}.mn{fill:#E9A15B;opacity:.55}
+@media (prefers-color-scheme:dark){.o{stroke:#8696A3;stroke-opacity:.8}.k,.a{fill:#F0A892}.l{fill:#7CC9BB}.v{stroke:#7CC9BB}.d{fill:#4E8F86}.mn{fill:#F2EADB;opacity:.75}}</style>
+<defs>
+<g id="ls"><ellipse cx="-6" cy="-27" rx="52" ry="28"/><path d="M24-45c18-6 44-2 52 14c6 12-2 25-16 25h-30c-12-4-14-32-6-39z"/><ellipse cx="30" cy="-47" rx="6.5" ry="5.5"/></g>
+<g id="ly">
+<use xlink:href="#ls" fill="#C98A55" class="o" stroke-width="5"/><use xlink:href="#ls" fill="#C98A55"/>
+<ellipse cx="-36" cy="-17" rx="17" ry="14" fill="#B47848"/>
+<ellipse cx="-4" cy="-6" rx="34" ry="7" fill="#EBC9A2" opacity=".7"/>
+<ellipse cx="30" cy="-46" rx="3.2" ry="2.8" fill="#8E5A33"/>
+<ellipse cx="70" cy="-31" rx="3.6" ry="3" fill="#6B4A35"/>
+<path d="M44-34q5 3 10 0" fill="none" stroke="#4A3325" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M62-15q4 2 8-1" fill="none" stroke="#6B4A35" stroke-width="1.5" stroke-linecap="round"/>
+<ellipse class="k" cx="54" cy="-23" rx="6" ry="3.5" opacity=".8"/>
+<g fill="#8E5A33"><ellipse cx="44" cy="-2" rx="12" ry="4.5"/><ellipse cx="-44" cy="-2" rx="10" ry="4"/></g>
+</g>
+<path id="sal" class="a" d="M13-52q9 12 8 30l-8 1q1-16-6-28z"/>
+<g id="sbl"><path class="l" d="M22-50q2-18 20-21q0 16-20 21z"/><path class="v" d="M23-51q7-8 16-17" fill="none" stroke-width="1.3" opacity=".5"/></g>
+</defs>
+<path class="mn" d="M168 22a16 16 0 1 0 14 24a13 13 0 1 1-14-24z"/><g class="mn"><circle cx="138" cy="30" r="2"/><circle cx="150" cy="56" r="1.5"/></g>
+<g transform="translate(124 144) scale(-1 1) scale(.98)"><use xlink:href="#ly"/><use xlink:href="#sbl"/></g>
+<g transform="translate(84 184) scale(.98)"><use xlink:href="#ly"/><use xlink:href="#sal"/></g>
+</svg>

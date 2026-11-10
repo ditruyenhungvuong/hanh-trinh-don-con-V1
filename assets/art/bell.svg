@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="t"><title id="t">Chiếc chuông nhỏ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Chuông cho nút giữ 3 giây (C1 chặng 1); vòng tiến độ do app vẽ. Đêm đổi màu qua prefers-color-scheme. -->
+<style>.b{fill:#E9A15B;stroke:#96551A}.e{stroke:#96551A}.k{fill:#96551A}.w{fill:#C98A55;stroke:#8E5A33}
+@media (prefers-color-scheme:dark){.b{fill:#F0B060;stroke:#F2C07A}.e{stroke:#F2C07A}.k{fill:#F2C07A}.w{stroke:#8696A3}}</style>
+<rect class="w" x="52" y="10" width="16" height="16" rx="7" stroke-width="2.5"/>
+<path class="b" stroke-width="3" stroke-linejoin="round" d="M30 88c0-38 10-62 30-62s30 24 30 62l8 8h-76z"/>
+<path class="e" d="M20 96h80" stroke-width="7" stroke-linecap="round"/>
+<circle class="k" cx="60" cy="106" r="7"/>
+<path d="M44 74q1-24 12-34" fill="none" stroke="#FFF" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+</svg>

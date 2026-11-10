@@ -1,0 +1,70 @@
+/* Hành Trình Đón Con – css/together.css · Chủ: FE-7 Hai ta (T-08, A2)
+   M15, C1–C4: thẻ hồng đào, bản đồ 5 chặng, chuông giữ, lật thẻ, hẹn giờ lượt nói, hũ + tim, tab Gửi lời.
+   Chỉ dùng token của styles.css (chế độ đêm tự đổi theo token). Giảm chuyển động: luật chung ở styles.css (tim hiện ngay trong hũ). */
+
+/* ===== M15 Hai ta ===== */
+.tg-list .tg-card { background: var(--peach-soft); border: 2px solid var(--peach-strong); }
+.tg-list .tg-card .choice-sub { color: var(--peach-ink); }
+
+/* ===== C1 bản đồ chặng (.jmap có sẵn ở styles.css; li bọc nút nằm trên đường nối) ===== */
+.tg-map li { position: relative; z-index: 1; list-style: none; }
+.tg-c1 h1 { margin-top: 4px; }
+/* Thở ở chặng 2: nút "Xong" của trình phát ẩn, dùng nút "Sang chặng 3 ›" chung */
+#tg-st [data-pfin] { display: none; }
+
+/* ===== Chặng 1: chuông giữ 3 giây ===== */
+.tg-bell-wrap { display: grid; place-items: center; margin: 12px 0 4px; }
+.tg-bell { position: relative; width: 148px; height: 148px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--warm-soft);
+  display: grid; place-items: center; cursor: pointer; padding: 0; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.tg-bell img, .tg-bell .tg-bell-fb { position: relative; pointer-events: none; }
+.tg-bell .tg-bell-fb { font-size: 56px; }
+.tg-bell .tg-ring { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); pointer-events: none; }
+.tg-bell.is-holding { background: var(--peach-soft); border-color: var(--peach-strong); }
+.tg-bell.is-done { border-color: var(--done); }
+.tg-bell.is-done .tg-ring-fg { stroke: var(--done); }
+.tg-bell:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 50%; }
+.tg-ring-bg { fill: none; stroke: var(--line); stroke-width: 6; }
+.tg-ring-fg { fill: none; stroke: var(--primary); stroke-width: 6; stroke-linecap: round; }
+.tg-msg { min-height: 1.6em; font-weight: 600; margin: 6px 0; }
+
+/* ===== Chặng 3: màn chắn, lật thẻ ===== */
+.tg-shield { background: var(--surface-2); border-radius: var(--radius); padding: 28px 16px 12px; text-align: center; }
+.tg-reveal { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0; }
+.tg-pick { margin: 0; text-align: center; }
+.tg-pick img, .tg-pick .capy-emoji { width: 100%; max-width: 140px; height: auto; aspect-ratio: 1; margin: 0 auto 6px; display: grid; place-items: center;
+  object-fit: contain; border-radius: 14px; background: var(--surface-2); font-size: 56px; }
+.tg-pick figcaption { font-size: var(--fs-small); font-weight: 600; }
+
+/* ===== Chặng 4 / C3: luật nói – nghe, hẹn giờ mảnh ===== */
+.tg-rule { background: var(--peach-soft); border-left: 4px solid var(--peach-strong); border-radius: var(--radius-sm); padding: 6px 12px; margin: 8px 0; }
+.tg-rule p { margin: 6px 0; color: var(--ink); }
+.tg-timer { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.tg-timer .tg-ring { width: 44px; height: 44px; flex: none; }
+.tg-timer p { margin: 0; color: var(--muted); }
+
+/* ===== Chặng 5: hũ bình an chung, hai tim rơi vào hũ ===== */
+.tg-ideas li { color: var(--muted); }
+.tg-jar { position: relative; width: 120px; height: 140px; margin: 44px auto 12px; }
+.tg-jar > img, .tg-jar > .pair-fb { display: block; margin: 0; }
+.tg-heart { position: absolute; top: -40px; width: 32px; height: 32px; opacity: 0; transition: transform .6s ease-in, opacity .25s; }
+.tg-heart.a { left: 28px; } .tg-heart.b { right: 28px; }
+.tg-heart.in { opacity: 1; transform: translateY(104px); }
+.tg-heart-fb { font-size: 26px; }
+[data-heart]:disabled { opacity: 1; cursor: default; }   /* "Đã thả vào hũ ✓" vẫn đọc rõ */
+
+/* ===== Màn kết ===== */
+.tg-end { text-align: center; }
+.tg-end > .pair, .tg-end > .pair-fb { display: inline-grid; margin: 0 4px 12px; vertical-align: bottom; }
+
+/* ===== C4 Gửi lời: chip chọn một, hai tab, hộp nguyên văn ===== */
+.chip[role="radio"][aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: var(--primary-ink); }
+.chip[role="radio"][aria-checked="true"]::before { content: "✓ "; }
+.tg-tabs { display: flex; margin: 14px 0 8px; border-bottom: 1.5px solid var(--line-strong); }
+.tg-tabs [role="tab"] { flex: 1; min-height: var(--tap-min); border: 0; border-bottom: 3px solid transparent; background: none; cursor: pointer;
+  font: 600 var(--fs-small) var(--font); color: var(--muted); }
+.tg-tabs [aria-selected="true"] { color: var(--ink); border-bottom-color: var(--primary); }
+.tg-preview { border: 2px dashed var(--peach-strong); border-radius: var(--radius-sm); padding: 10px 14px; margin: 14px 0 8px; background: var(--surface); }
+.tg-preview .label { margin: 0 0 4px; }
+.tg-pv-text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 1.0625rem; user-select: text; -webkit-user-select: text; }
+/* C4 nút gửi khi chưa có nguyên văn (aria-disabled, bấm vẫn hiện lời nhắc): kiểu ghost viền đứt, chữ đủ tương phản thay vì mờ 50 % (T-I2) */
+.tg-c4 #tg-send[aria-disabled="true"] { opacity: 1; background: var(--surface); border-color: var(--line-strong); border-style: dashed; color: var(--ink); }

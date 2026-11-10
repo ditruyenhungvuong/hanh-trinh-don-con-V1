@@ -1,0 +1,89 @@
+/* Hành Trình Đón Con – css/night.css · Chủ: FE-5 Trước khi ngủ (T-05)
+   M13–M14 (data-mode="night"), trình chiếu chữ, bản "Đọc cho nhau nghe", L12; trình chiếu ngày (B8, .reader.embed).
+   Màu lấy từ token :root[data-mode="night"] trong styles.css (UX mục 5): không #FFFFFF, không đỏ, không gradient sáng.
+   Khung chung .reader / .reader-stage / .reader-block / .reader-foot / .read-aloud / .pause-mark nằm ở styles.css (ux). */
+
+/* ===== M13 Trước khi ngủ ===== */
+.night-art { display: block; width: 96px; height: 96px; margin: 4px auto 12px; }       /* CapyPair sleep / blanket (T-06), tĩnh */
+.night-art[width="72"] { width: 72px; height: 72px; }
+.night-capy { width: 96px; height: 96px; margin: 4px auto 12px; border-radius: 24px; background: var(--surface-2);
+  display: grid; place-items: center; font-size: 34px; }                         /* SVG lỗi → 🐾🐾 cùng cỡ (UX 12) */
+.night-promise { margin: 12px 0 20px; }
+.night-card { display: flex; flex-direction: column; gap: 4px; width: 100%; min-height: var(--tap); margin: 0 0 10px; padding: 14px 16px;
+  text-align: left; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius); cursor: pointer; }
+.night-card:hover { border-color: var(--primary); }
+.night-card-title { font-weight: 600; }
+.night-card-meta { font-size: var(--fs-small); color: var(--muted); }
+.night-more { margin: 16px 0; }
+.night-more > summary { min-height: var(--tap-min); display: flex; align-items: center; font-weight: 600; cursor: pointer; margin-bottom: 8px; }
+.night-soft { background: var(--surface-2); }
+.night-soft .night-card { background: var(--surface); }
+
+/* ===== M13c Cách nghe ===== */
+.how-list { border: 0; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+.how-opt { display: flex; gap: 12px; align-items: flex-start; padding: 14px; min-height: var(--tap); border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius); background: var(--surface); cursor: pointer; }
+.how-opt input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--primary); }
+.how-opt span { display: flex; flex-direction: column; gap: 2px; }
+.how-opt small { color: var(--muted); font-size: var(--fs-small); }
+.how-opt:has(input:checked) { border-color: var(--primary); border-width: 3px; background: var(--primary-soft); padding: 12.5px; }
+.listener-wrap { padding: 0 4px; }
+.chips-label { align-self: center; font-size: var(--fs-small); color: var(--muted); margin-right: 4px; }
+.music-box { border-top: 1px solid var(--line); padding: 14px 0 4px; margin-bottom: 8px; }
+.music-row { display: flex; justify-content: space-between; align-items: center; min-height: var(--tap-min); font-weight: 600; }
+/* B-04: nút cao 44 (vùng chạm), rãnh 52×32 vẽ bằng ::before nên hình công tắc giữ nguyên */
+.music-box .switch { cursor: pointer; padding: 0; height: var(--tap-min); background: none; border: 0; }
+.music-box .switch::before { content: ""; position: absolute; inset: 6px 0; border-radius: 999px; background: var(--surface-2); border: 1.5px solid var(--line-strong); }
+.music-box .switch[aria-checked="true"]::before { background: var(--primary); border-color: var(--primary); }
+.music-box .switch::after { content: ""; position: absolute; top: 10.5px; left: 4.5px; width: 23px; height: 23px; border-radius: 50%;
+  background: var(--line-strong); transition: transform .2s; }
+.music-box .switch[aria-checked="true"]::after { transform: translateX(20px); background: var(--primary-ink); }
+.vol-val { font-weight: 400; color: var(--muted); }
+
+/* ===== M14 Trình chiếu đêm (chữ theo nhịp) ===== */
+#main[data-screen="night_play"] { padding: 0; }
+.reader-stage { position: relative; }
+.reader-tap { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; border-radius: 0; }
+.reader-tap:focus-visible { outline-offset: -6px; }
+.reader-note { min-height: 1.4em; text-align: center; margin: 8px 20px 4px; }
+.reader-progress > span { width: 0; transition: width .25s linear; }
+.reader-ctl { display: flex; flex-wrap: wrap; gap: 8px; }
+.reader-ctl > .btn { flex: 1 1 120px; }
+.reader-block.ending { opacity: .12; transition: opacity 10s ease; }        /* kết bài: chữ tối dần 10 s */
+.reader-calm, .reader-end { padding: 32px 20px; max-width: 32rem; margin: 0 auto; width: 100%; box-sizing: border-box; }
+.reader-calm > p { font-size: var(--fs-read); line-height: var(--lh-read); text-align: center; }
+.reader-calm p:focus, .night-end h2:focus, .night-bye:focus { outline: none; }
+.night-end { text-align: center; }
+.night-end .chips { justify-content: center; margin: 12px 0; }
+.night-bye { font-size: var(--fs-read); line-height: var(--lh-read); color: var(--muted); }
+.reader-warn { text-align: center; margin: 4px 20px; }
+.reader-stage.voice { min-height: 40vh; }
+
+/* ===== M14r Đọc cho nhau nghe: cả bài cuộn, không tự chạy ===== */
+.night-read { padding: 16px 16px 0; }
+.night-read h1 { font-size: 1.25rem; }
+.night-read .read-aloud { max-width: 34rem; margin: 12px auto 24px; color: var(--read-ink); }
+.night-read .read-aloud p { margin: 0 0 4px; }
+.night-read .pause-mark { color: var(--read-ink-dim); text-align: center; }
+.night-read .reader-foot { margin: 0 -16px; }
+.read-how { margin: 4px 0 12px; }
+.read-how > summary { min-height: var(--tap-min); display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.read-how p { color: var(--muted); font-size: var(--fs-small); }
+
+/* ===== L12 "Bài này làm mình nặng lòng": dịu, không đỏ ===== */
+.night-heavy { text-align: center; padding-top: 16px; }
+.night-heavy p { font-size: 1.0625rem; }
+
+/* ===== B8 ban ngày: trình chiếu nhúng trong trình phát (api.paced) ===== */
+.reader.embed { min-height: 0; border-radius: var(--radius); border: 1px solid var(--line); padding-bottom: 12px; }
+.reader.embed .reader-stage { min-height: 220px; }
+.reader.embed .reader-ctl { padding: 4px 16px 0; }
+
+@media (min-width: 768px) {
+  .reader-foot { padding-left: max(16px, calc((100% - 520px) / 2)); padding-right: max(16px, calc((100% - 520px) / 2)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reader-block.ending { opacity: 1; }   /* JS hạ độ mờ ba bậc thay cho chuyển động (UX 9) */
+  .music-box .switch::after { transition: none; }
+}

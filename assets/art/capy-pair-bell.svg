@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" role="img" aria-labelledby="t"><title id="t">Hai bé capybara cùng giữ một chiếc chuông nhỏ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Tư thế bell: C1 chặng 1 Cùng dừng lại. Màu theo token Hừng Đông; đêm đổi qua prefers-color-scheme (trang đêm đặt color-scheme: dark). -->
+<style>.o{stroke:#8E5A33}.k{fill:#F2A58E}.a{fill:#C46A50}.l{fill:#2E7D74}.v{stroke:#2E7D74}.d{fill:#9CC7B5}.bb{fill:#E9A15B;stroke:#96551A}.br{stroke:#96551A}.bc,.bh{fill:#96551A}
+@media (prefers-color-scheme:dark){.o{stroke:#8696A3;stroke-opacity:.8}.k,.a{fill:#F0A892}.l{fill:#7CC9BB}.v{stroke:#7CC9BB}.d{fill:#4E8F86}.bb{fill:#F0B060;stroke:#F2C07A}.br{stroke:#F2C07A}.bc,.bh{fill:#F2C07A}}</style>
+<defs>
+<g id="hs"><ellipse cx="-24" cy="-104" rx="6.5" ry="6"/><ellipse cx="24" cy="-104" rx="6.5" ry="6"/><path d="M-34-86c0-18 14-25 34-25s34 7 34 25c0 14-12 25-34 25s-34-11-34-25z"/></g>
+<g id="cb">
+<path d="M-40-4c-8-30 0-62 40-62s48 32 40 62q-40 9-80 0z" fill="#C98A55" class="o" stroke-width="2.5"/>
+<ellipse cy="-31" rx="25" ry="25" fill="#EBC9A2" opacity=".75"/>
+<g fill="#8E5A33"><ellipse cx="-17" cy="0" rx="13" ry="5.5"/><ellipse cx="17" cy="0" rx="13" ry="5.5"/></g>
+</g>
+<g id="ch">
+<use xlink:href="#hs" fill="#C98A55" class="o" stroke-width="5"/><use xlink:href="#hs" fill="#C98A55"/>
+<g fill="#8E5A33"><ellipse cx="-24" cy="-103" rx="3.5" ry="3"/><ellipse cx="24" cy="-103" rx="3.5" ry="3"/></g>
+<ellipse cy="-76" rx="21" ry="14" fill="#EBC9A2"/>
+<path d="M-9-83q9-5 18 0q-1 6-9 6t-9-6z" fill="#6B4A35"/>
+<path d="M-6-73q3 3 6 0q3 3 6 0" fill="none" stroke="#6B4A35" stroke-width="1.6" stroke-linecap="round"/>
+<g class="k" opacity=".8"><ellipse cx="-25" cy="-80" rx="6" ry="4"/><ellipse cx="25" cy="-80" rx="6" ry="4"/></g>
+</g>
+<g id="c"><use xlink:href="#cb"/><use xlink:href="#ch"/></g>
+<path id="e" d="M-22-93q5 4 10 0M12-93q5 4 10 0" fill="none" stroke="#4A3325" stroke-width="2.2" stroke-linecap="round"/>
+<!-- Khăn đào của bé A -->
+<g id="sa" class="a"><path d="M-31-64q31 13 62 0l1 8q-32 14-64 0z"/><path d="M12-58l12-1 4 22-11 2z"/></g>
+<!-- Lá xanh trên đầu bé B (không gắn giới) -->
+<g id="sb"><path class="l" d="M-3-109q6-18 24-17q-5 18-24 17z"/><path class="v" d="M-2-110q9-6 18-13" fill="none" stroke-width="1.4" opacity=".5"/></g>
+<g id="bl"><path class="bh" d="M-4-52h8v-8a4 4 0 0 0-8 0z"/><path class="bb" d="M-20-8c0-26 6-44 20-44s20 18 20 44l5 6h-50z" stroke-width="2.5"/>
+<path class="br" d="M-25-2h50" stroke-width="5" stroke-linecap="round"/><circle class="bc" cy="3" r="5"/><path d="M-10-36q3-8 8-10" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity=".55"/></g>
+</defs>
+<g class="d" opacity=".55"><path d="M24 52q8-12 20-9q-7 11-20 9z"/><path d="M168 40q4-13 16-14q-3 12-16 14z"/></g>
+<g transform="translate(46 188) scale(1.0) rotate(-2)"><use xlink:href="#c"/><use xlink:href="#e"/><use xlink:href="#sa"/></g>
+<g transform="translate(154 188) scale(1.0) rotate(2)"><use xlink:href="#c"/><use xlink:href="#e"/><use xlink:href="#sb"/></g>
+<use xlink:href="#bl" transform="translate(100 188)"/>
+<g fill="#C98A55" class="o" stroke-width="2"><ellipse cx="80" cy="162" rx="14" ry="7.5" transform="rotate(22 80 162)"/><ellipse cx="116" cy="152" rx="14" ry="7.5" transform="rotate(-28 116 152)"/></g>
+</svg>

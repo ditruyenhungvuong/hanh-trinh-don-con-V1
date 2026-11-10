@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="t"><title id="t">Mầm cây nhỏ</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Icon ô "Chăm mình hôm nay" (.tile nền thường). Đêm đổi màu qua prefers-color-scheme. -->
+<style>.l{fill:#2E7D74}.s{stroke:#2E7D74}.g{fill:#C98A55}@media (prefers-color-scheme:dark){.l{fill:#7CC9BB}.s{stroke:#7CC9BB}}</style>
+<path class="s" d="M24 40V22" fill="none" stroke-width="3" stroke-linecap="round"/>
+<path class="l" d="M24 24C24 14 17 9 7 10c0 9 7 14 17 14z"/><path class="l" d="M24 20c0-8 6-13 16-12c0 8-6 12-16 12z" opacity=".8"/>
+<path class="g" d="M10 44q14-8 28 0z"/>
+</svg>

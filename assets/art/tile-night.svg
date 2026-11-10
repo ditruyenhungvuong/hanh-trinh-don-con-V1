@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="t"><title id="t">Vầng trăng</title>
+<!-- Hành Trình Đón Con · Chủ: FE-6 Hình (T-06). Icon ô "Trước khi ngủ" (.tile.night luôn nền đêm #1C2834): trăng kem, sáng hay đêm đều vậy. -->
+<path fill="#F2EADB" d="M30 6a18 18 0 1 0 12 30a15 15 0 1 1-12-30z"/>
+<g fill="#F0B060"><circle cx="38" cy="12" r="2"/><circle cx="43" cy="22" r="1.4"/></g>
+</svg>
